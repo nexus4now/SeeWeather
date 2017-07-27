@@ -18,14 +18,14 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:src="@mipmap/icon_city_temp"
+            android:src="@drawable/ic_room_red_500_18dp"
             android:layout_width="24dp"
             android:layout_height="24dp"/>
 
         <TextView
             android:id="@+id/item_city"
             android:layout_marginLeft="16dp"
-            android:text="成都"
+            android:text="宁波"
             android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

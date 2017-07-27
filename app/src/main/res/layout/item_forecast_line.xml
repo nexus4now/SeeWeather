@@ -35,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="5° 13°"/>
+            android:text="5°-13°"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:textColor="#969696"

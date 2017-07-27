@@ -3,19 +3,14 @@ apply plugin: 'me.tatarka.retrolambda' //加上这句加,入plugin声明
 
 android {
     def app = rootProject.ext.android
-
-
     compileSdkVersion app.compileSdkVersion
     buildToolsVersion app.buildToolsVersion
-
     defaultConfig {
-        applicationId app.applicationId
-        minSdkVersion app.minSdkVersion
+        applicationId 'com.nexus4now.weather'
+        minSdkVersion 21
         targetSdkVersion app.targetSdkVersion
-        versionCode app.versionCode
         versionName app.versionName
         resConfigs "zh"
-
         ndk {
             //设置支持的SO库架构
             abiFilters 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
@@ -23,9 +18,10 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled false //混淆
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            shrinkResources true
+            shrinkResources true//移除无用RES
         }
     }
     compileOptions {
@@ -43,7 +39,8 @@ android {
 
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
-
+    productFlavors {
+    }
 }
 
 retrolambda {
@@ -51,7 +48,6 @@ retrolambda {
     javaVersion JavaVersion.VERSION_1_6
 }
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
@@ -72,17 +68,17 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
-
-    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
-    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
-
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
     debugCompile 'com.github.moduth:blockcanary-android:1.2.1'
     releaseCompile 'com.github.moduth:blockcanary-no-op:1.2.1'
-
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-
     compile 'com.google.firebase:firebase-core:9.0.0'
+    compile 'com.github.pwittchen:weathericonview:1.1.0'
+    compile 'com.google.android.gms:play-services-appindexing:9.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
